@@ -1,4 +1,4 @@
-# Shopify Camera Pro Theme
+# NextProtect - Shopify Theme
 
 Thème Shopify custom avec architecture **Vite + Tailwind CSS + TypeScript + GSAP**.
 

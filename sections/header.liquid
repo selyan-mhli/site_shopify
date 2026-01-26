@@ -10,7 +10,7 @@
             loading="eager"
           >
         {%- else -%}
-          <span class="text-2xl font-bold text-dark-100">{{ shop.name }}</span>
+          <img src="{{ 'logo.svg' | asset_url }}" alt="{{ shop.name }}" class="h-8 w-auto">
         {%- endif -%}
       </a>
 
