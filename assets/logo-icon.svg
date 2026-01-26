@@ -1,10 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
   <!-- Shield Icon -->
-  <path d="M20 4L6 10v10c0 9.55 5.97 18.48 14 22 8.03-3.52 14-12.45 14-22V10L20 4z" fill="url(#shield-gradient)" stroke="#0ea5e9" stroke-width="1.5"/>
-  <path d="M15 20l4 4 8-8" stroke="#0ea5e9" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M24 6L8 13v12c0 11.46 7.16 22.18 16 26 8.84-3.82 16-14.54 16-26V13L24 6z" fill="url(#shield-gradient)" stroke="#0ea5e9" stroke-width="1.5"/>
+  <path d="M18 24l5 5 10-10" stroke="#0ea5e9" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
   
   <defs>
-    <linearGradient id="shield-gradient" x1="6" y1="4" x2="34" y2="36" gradientUnits="userSpaceOnUse">
+    <linearGradient id="shield-gradient" x1="8" y1="6" x2="40" y2="42" gradientUnits="userSpaceOnUse">
       <stop offset="0%" stop-color="#0ea5e9" stop-opacity="0.2"/>
       <stop offset="100%" stop-color="#0284c7" stop-opacity="0.1"/>
     </linearGradient>
