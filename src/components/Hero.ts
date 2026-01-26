@@ -29,7 +29,7 @@ export class HeroComponent extends HTMLElement {
             <span class="text-sm text-dark-300 font-mono">Professional Camera Equipment</span>
           </div>
           
-          <h1 class="hero-title text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-6">
+          <h1 class="hero-title text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-10">
             <span class="block text-dark-100">Precision</span>
             <span class="block text-gradient">Imaging Tech</span>
           </h1>
