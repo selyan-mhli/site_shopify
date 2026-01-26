@@ -108,7 +108,90 @@
   </div>
 </section>
 
-<section class="about-cta py-16 bg-dark-950">
+<section class="about-faq py-16 bg-dark-950">
+  <div class="container mx-auto px-6">
+    <div class="max-w-3xl mx-auto">
+      <div class="text-center mb-12">
+        <p class="text-sm font-mono text-primary-500 uppercase tracking-wider mb-4">FAQ</p>
+        <h2 class="text-3xl md:text-4xl font-bold text-dark-100">Frequently Asked Questions</h2>
+      </div>
+
+      <div class="space-y-4">
+        <div class="faq-item border border-dark-700/50 rounded-xl overflow-hidden">
+          <button class="faq-trigger w-full flex items-center justify-between p-6 text-left bg-dark-800/30 hover:bg-dark-800/50 transition-colors" onclick="this.parentElement.classList.toggle('open')">
+            <span class="font-medium text-dark-100 pr-4">What is your return policy?</span>
+            <svg class="faq-icon w-5 h-5 text-primary-500 flex-shrink-0 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+          <div class="faq-content">
+            <div class="p-6 pt-0 text-dark-400 leading-relaxed">
+              We offer a 30-day return policy on all products. Items must be in original condition with all accessories included.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item border border-dark-700/50 rounded-xl overflow-hidden">
+          <button class="faq-trigger w-full flex items-center justify-between p-6 text-left bg-dark-800/30 hover:bg-dark-800/50 transition-colors" onclick="this.parentElement.classList.toggle('open')">
+            <span class="font-medium text-dark-100 pr-4">Do you offer international shipping?</span>
+            <svg class="faq-icon w-5 h-5 text-primary-500 flex-shrink-0 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+          <div class="faq-content">
+            <div class="p-6 pt-0 text-dark-400 leading-relaxed">
+              Yes, we ship worldwide. Shipping costs and delivery times vary by location. Free shipping on orders over $100.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item border border-dark-700/50 rounded-xl overflow-hidden">
+          <button class="faq-trigger w-full flex items-center justify-between p-6 text-left bg-dark-800/30 hover:bg-dark-800/50 transition-colors" onclick="this.parentElement.classList.toggle('open')">
+            <span class="font-medium text-dark-100 pr-4">What warranty do your products have?</span>
+            <svg class="faq-icon w-5 h-5 text-primary-500 flex-shrink-0 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+          <div class="faq-content">
+            <div class="p-6 pt-0 text-dark-400 leading-relaxed">
+              All our products come with a 2-year manufacturer warranty covering defects in materials and workmanship.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item border border-dark-700/50 rounded-xl overflow-hidden">
+          <button class="faq-trigger w-full flex items-center justify-between p-6 text-left bg-dark-800/30 hover:bg-dark-800/50 transition-colors" onclick="this.parentElement.classList.toggle('open')">
+            <span class="font-medium text-dark-100 pr-4">How do I set up my camera system?</span>
+            <svg class="faq-icon w-5 h-5 text-primary-500 flex-shrink-0 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+          <div class="faq-content">
+            <div class="p-6 pt-0 text-dark-400 leading-relaxed">
+              Each product comes with detailed instructions and our mobile app guides you through the setup process. Our support team is available 24/7 if you need assistance.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+  }
+  .faq-item.open .faq-content {
+    max-height: 500px;
+  }
+  .faq-item.open .faq-icon {
+    transform: rotate(180deg);
+  }
+</style>
+
+<section class="about-cta py-16 bg-dark-900/30">
   <div class="container mx-auto px-6">
     <div class="max-w-2xl mx-auto text-center">
       <h2 class="text-3xl md:text-4xl font-bold text-dark-100 mb-6">Ready to Secure Your Space?</h2>

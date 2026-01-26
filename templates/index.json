@@ -113,5 +113,5 @@
       "block_order": ["q1", "q2", "q3", "q4"]
     }
   },
-  "order": ["hero", "trust-badges", "features", "featured-collection", "testimonials", "faq"]
+  "order": ["hero", "trust-badges", "features", "featured-collection", "testimonials"]
 }

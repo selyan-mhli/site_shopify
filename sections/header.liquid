@@ -15,6 +15,9 @@
       </a>
 
       <div class="header-nav hidden lg:flex items-center gap-8">
+        <a href="/" class="text-sm font-medium text-dark-300 hover:text-primary-400 transition-colors duration-200">
+          Home
+        </a>
         <a href="/collections/all" class="text-sm font-medium text-dark-300 hover:text-primary-400 transition-colors duration-200">
           Products
         </a>
@@ -24,14 +27,6 @@
         <a href="/pages/contact" class="text-sm font-medium text-dark-300 hover:text-primary-400 transition-colors duration-200">
           Contact
         </a>
-        {%- for link in linklists.main-menu.links -%}
-          <a 
-            href="{{ link.url }}" 
-            class="text-sm font-medium text-dark-300 hover:text-primary-400 transition-colors duration-200 {% if link.active %}text-primary-500{% endif %}"
-          >
-            {{ link.title }}
-          </a>
-        {%- endfor -%}
       </div>
 
       <div class="header-actions flex items-center gap-4">
