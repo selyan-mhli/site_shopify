@@ -1,0 +1,142 @@
+<section class="faq py-16 bg-dark-950" x-data="{ openIndex: null }">
+  <div class="container mx-auto px-6">
+    <div class="max-w-3xl mx-auto">
+      {% if section.settings.title != blank %}
+        <div class="text-center mb-12">
+          {% if section.settings.subtitle != blank %}
+            <p class="text-sm font-mono text-primary-500 uppercase tracking-wider mb-4">{{ section.settings.subtitle }}</p>
+          {% endif %}
+          <h2 class="text-3xl md:text-4xl font-bold text-dark-100 mb-4">{{ section.settings.title }}</h2>
+        </div>
+      {% endif %}
+
+      {% if section.blocks.size > 0 %}
+        <div class="space-y-4">
+          {% for block in section.blocks %}
+            <div class="faq-item border border-dark-700/50 rounded-xl overflow-hidden" {{ block.shopify_attributes }}>
+              <button 
+                class="faq-trigger w-full flex items-center justify-between p-6 text-left bg-dark-800/30 hover:bg-dark-800/50 transition-colors"
+                onclick="this.parentElement.classList.toggle('open')"
+              >
+                <span class="font-medium text-dark-100 pr-4">{{ block.settings.question }}</span>
+                <svg class="faq-icon w-5 h-5 text-primary-500 flex-shrink-0 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                </svg>
+              </button>
+              <div class="faq-content">
+                <div class="p-6 pt-0 text-dark-400 leading-relaxed">
+                  {{ block.settings.answer }}
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      {% else %}
+        <div class="text-center py-12">
+          <p class="text-dark-500">Add FAQ items using the section blocks.</p>
+        </div>
+      {% endif %}
+
+      {% if section.settings.show_contact %}
+        <div class="mt-12 text-center p-8 bg-dark-800/30 border border-dark-700/50 rounded-xl">
+          <p class="text-dark-300 mb-4">{{ section.settings.contact_text | default: "Still have questions?" }}</p>
+          <a href="{{ section.settings.contact_link | default: '/pages/contact' }}" class="inline-flex items-center gap-2 px-6 py-3 bg-primary-600 hover:bg-primary-500 text-white font-medium rounded-lg transition-colors">
+            {{ section.settings.contact_button | default: "Contact Us" }}
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+  }
+  .faq-item.open .faq-content {
+    max-height: 500px;
+  }
+  .faq-item.open .faq-icon {
+    transform: rotate(180deg);
+  }
+</style>
+
+{% schema %}
+{
+  "name": "FAQ",
+  "tag": "section",
+  "class": "faq-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "FAQ"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Frequently Asked Questions"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_contact",
+      "label": "Show contact CTA",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "contact_text",
+      "label": "Contact text",
+      "default": "Still have questions?"
+    },
+    {
+      "type": "text",
+      "id": "contact_button",
+      "label": "Contact button text",
+      "default": "Contact Us"
+    },
+    {
+      "type": "url",
+      "id": "contact_link",
+      "label": "Contact link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "question",
+      "name": "Question",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "What is your return policy?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>We offer a 30-day return policy on all products. Items must be in original condition with all accessories included.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ",
+      "blocks": [
+        { "type": "question", "settings": { "question": "What is your return policy?", "answer": "<p>We offer a 30-day return policy on all products. Items must be in original condition with all accessories included.</p>" } },
+        { "type": "question", "settings": { "question": "Do you offer international shipping?", "answer": "<p>Yes, we ship worldwide. Shipping costs and delivery times vary by location.</p>" } },
+        { "type": "question", "settings": { "question": "What warranty do your products have?", "answer": "<p>All our products come with a 2-year manufacturer warranty covering defects in materials and workmanship.</p>" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

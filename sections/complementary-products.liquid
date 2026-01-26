@@ -1,0 +1,176 @@
+{%- liquid
+  assign current_product = product
+  assign collection = collections[section.settings.collection]
+  assign products_to_show = section.settings.products_to_show
+-%}
+
+<section class="complementary-products py-16 bg-dark-900/30 border-t border-dark-800/50">
+  <div class="container mx-auto px-6">
+    {% if section.settings.title != blank %}
+      <div class="flex items-center justify-between mb-10">
+        <div>
+          <h2 class="text-2xl md:text-3xl font-bold text-dark-100">{{ section.settings.title }}</h2>
+          {% if section.settings.subtitle != blank %}
+            <p class="text-dark-400 mt-2">{{ section.settings.subtitle }}</p>
+          {% endif %}
+        </div>
+      </div>
+    {% endif %}
+
+    {% if collection != blank and collection.products.size > 0 %}
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-{{ section.settings.columns }} gap-4 md:gap-6">
+        {% for product in collection.products limit: products_to_show %}
+          {% unless product.id == current_product.id %}
+            <div class="complementary-item group">
+              <a href="{{ product.url }}" class="block">
+                <div class="relative aspect-square overflow-hidden rounded-xl bg-dark-800 mb-4">
+                  {% if product.featured_image %}
+                    <img 
+                      src="{{ product.featured_image | image_url: width: 600 }}"
+                      alt="{{ product.title }}"
+                      class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      loading="lazy"
+                    >
+                  {% endif %}
+                  
+                  {% if section.settings.show_quick_add %}
+                    <div class="absolute inset-x-4 bottom-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <button 
+                        type="button"
+                        class="w-full py-3 bg-primary-600 hover:bg-primary-500 text-white text-sm font-medium rounded-lg transition-colors"
+                        onclick="event.preventDefault(); addToCart('{{ product.variants.first.id }}', 1);"
+                      >
+                        Add to Cart
+                      </button>
+                    </div>
+                  {% endif %}
+                </div>
+                
+                <h3 class="text-dark-100 font-medium mb-1 group-hover:text-primary-400 transition-colors line-clamp-2">{{ product.title }}</h3>
+                <div class="flex items-center gap-2">
+                  {% if product.compare_at_price > product.price %}
+                    <span class="text-primary-400 font-semibold">{{ product.price | money }}</span>
+                    <span class="text-sm text-dark-500 line-through">{{ product.compare_at_price | money }}</span>
+                  {% else %}
+                    <span class="text-dark-200 font-semibold">{{ product.price | money }}</span>
+                  {% endif %}
+                </div>
+              </a>
+            </div>
+          {% endunless %}
+        {% endfor %}
+      </div>
+      
+      {% if section.settings.show_bundle_cta %}
+        <div class="mt-10 p-6 bg-dark-800/50 border border-dark-700/50 rounded-xl flex flex-col md:flex-row items-center justify-between gap-4">
+          <div>
+            <p class="text-dark-100 font-medium">{{ section.settings.bundle_title | default: "Bundle & Save" }}</p>
+            <p class="text-dark-400 text-sm">{{ section.settings.bundle_text | default: "Get 15% off when you buy 3 or more items" }}</p>
+          </div>
+          <a href="{{ collection.url }}" class="px-6 py-3 bg-primary-600 hover:bg-primary-500 text-white font-medium rounded-lg transition-colors whitespace-nowrap">
+            Shop Bundle
+          </a>
+        </div>
+      {% endif %}
+    {% elsif recommendations.products.size > 0 %}
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-{{ section.settings.columns }} gap-4 md:gap-6">
+        {% for product in recommendations.products limit: products_to_show %}
+          <div class="complementary-item group">
+            <a href="{{ product.url }}" class="block">
+              <div class="relative aspect-square overflow-hidden rounded-xl bg-dark-800 mb-4">
+                {% if product.featured_image %}
+                  <img 
+                    src="{{ product.featured_image | image_url: width: 600 }}"
+                    alt="{{ product.title }}"
+                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                  >
+                {% endif %}
+              </div>
+              <h3 class="text-dark-100 font-medium mb-1 group-hover:text-primary-400 transition-colors line-clamp-2">{{ product.title }}</h3>
+              <span class="text-dark-200 font-semibold">{{ product.price | money }}</span>
+            </a>
+          </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="text-center py-12">
+        <p class="text-dark-500">Select a collection in the section settings.</p>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Complementary Products",
+  "tag": "section",
+  "class": "complementary-products-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Frequently Bought Together"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 2,
+      "max": 8,
+      "step": 1,
+      "default": 4,
+      "label": "Products to show"
+    },
+    {
+      "type": "select",
+      "id": "columns",
+      "label": "Columns on desktop",
+      "default": "4",
+      "options": [
+        { "value": "3", "label": "3 columns" },
+        { "value": "4", "label": "4 columns" }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "show_quick_add",
+      "label": "Show quick add button",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_bundle_cta",
+      "label": "Show bundle CTA",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "bundle_title",
+      "label": "Bundle title",
+      "default": "Bundle & Save"
+    },
+    {
+      "type": "text",
+      "id": "bundle_text",
+      "label": "Bundle text",
+      "default": "Get 15% off when you buy 3 or more items"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Complementary Products"
+    }
+  ]
+}
+{% endschema %}
