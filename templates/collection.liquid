@@ -1,0 +1,39 @@
+{% section 'collection-header' %}
+
+<div class="collection-products py-16 bg-dark-950">
+  <div class="container mx-auto px-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      {% for product in collection.products %}
+        {% render 'product-card', product: product %}
+      {% endfor %}
+    </div>
+
+    {% if paginate.pages > 1 %}
+      <div class="pagination flex items-center justify-center gap-2 mt-12">
+        {% if paginate.previous %}
+          <a href="{{ paginate.previous.url }}" class="btn-secondary">
+            Previous
+          </a>
+        {% endif %}
+        
+        {% for part in paginate.parts %}
+          {% if part.is_link %}
+            <a href="{{ part.url }}" class="w-10 h-10 flex items-center justify-center text-sm text-dark-400 hover:text-primary-400 transition-colors">
+              {{ part.title }}
+            </a>
+          {% else %}
+            <span class="w-10 h-10 flex items-center justify-center text-sm text-primary-500 font-medium bg-primary-500/10 rounded-lg">
+              {{ part.title }}
+            </span>
+          {% endif %}
+        {% endfor %}
+        
+        {% if paginate.next %}
+          <a href="{{ paginate.next.url }}" class="btn-secondary">
+            Next
+          </a>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+</div>

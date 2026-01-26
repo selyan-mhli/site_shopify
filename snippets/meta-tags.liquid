@@ -1,0 +1,44 @@
+{%- if request.page_type == 'index' -%}
+  {%- assign og_title = shop.name -%}
+  {%- assign og_description = shop.description | default: shop.name -%}
+{%- elsif request.page_type == 'product' -%}
+  {%- assign og_title = product.title -%}
+  {%- assign og_description = product.description | strip_html | truncate: 200 -%}
+{%- elsif request.page_type == 'collection' -%}
+  {%- assign og_title = collection.title -%}
+  {%- assign og_description = collection.description | strip_html | default: shop.description -%}
+{%- elsif request.page_type == 'page' -%}
+  {%- assign og_title = page.title -%}
+  {%- assign og_description = page.content | strip_html | truncate: 200 -%}
+{%- elsif request.page_type == 'blog' -%}
+  {%- assign og_title = blog.title -%}
+  {%- assign og_description = blog.title -%}
+{%- elsif request.page_type == 'article' -%}
+  {%- assign og_title = article.title -%}
+  {%- assign og_description = article.excerpt_or_content | strip_html | truncate: 200 -%}
+{%- else -%}
+  {%- assign og_title = page_title -%}
+  {%- assign og_description = shop.description | default: shop.name -%}
+{%- endif -%}
+
+<meta property="og:site_name" content="{{ shop.name }}">
+<meta property="og:title" content="{{ og_title }}">
+<meta property="og:description" content="{{ og_description }}">
+<meta property="og:url" content="{{ canonical_url }}">
+<meta property="og:type" content="{% if request.page_type == 'product' %}product{% elsif request.page_type == 'article' %}article{% else %}website{% endif %}">
+
+{%- if request.page_type == 'product' -%}
+  <meta property="og:image" content="{{ product.featured_image | image_url: width: 1200 }}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="1200">
+  <meta property="product:price:amount" content="{{ product.price | money_without_currency }}">
+  <meta property="product:price:currency" content="{{ cart.currency.iso_code }}">
+{%- elsif request.page_type == 'article' and article.image -%}
+  <meta property="og:image" content="{{ article.image | image_url: width: 1200 }}">
+{%- elsif settings.share_image -%}
+  <meta property="og:image" content="{{ settings.share_image | image_url: width: 1200 }}">
+{%- endif -%}
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ og_title }}">
+<meta name="twitter:description" content="{{ og_description }}">

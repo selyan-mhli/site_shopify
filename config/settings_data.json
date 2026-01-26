@@ -1,0 +1,10 @@
+{
+  "current": "Default",
+  "presets": {
+    "Default": {
+      "color_primary": "#0ea5e9",
+      "color_background": "#020617",
+      "color_text": "#f8fafc"
+    }
+  }
+}

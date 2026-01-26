@@ -1,0 +1,54 @@
+<features-grid></features-grid>
+
+{% schema %}
+{
+  "name": "Features Grid",
+  "tag": "section",
+  "class": "features-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Technical Excellence"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Section Subtitle",
+      "default": "Every component engineered for maximum performance and reliability."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Feature Title",
+          "default": "Feature Title"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Feature Description",
+          "default": "Feature description goes here."
+        },
+        {
+          "type": "text",
+          "id": "spec",
+          "label": "Technical Spec",
+          "default": "Spec • Value"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Features Grid"
+    }
+  ]
+}
+{% endschema %}
