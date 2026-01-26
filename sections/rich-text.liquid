@@ -1,0 +1,88 @@
+<section class="rich-text py-16 bg-dark-950 {{ section.settings.custom_class }}">
+  <div class="container mx-auto px-6">
+    <div class="max-w-3xl {% if section.settings.text_alignment == 'center' %}mx-auto text-center{% elsif section.settings.text_alignment == 'right' %}ml-auto text-right{% endif %}">
+      {% if section.settings.subtitle != blank %}
+        <p class="text-sm font-mono text-primary-500 uppercase tracking-wider mb-4">{{ section.settings.subtitle }}</p>
+      {% endif %}
+      
+      {% if section.settings.title != blank %}
+        <h2 class="text-3xl md:text-4xl font-bold text-dark-100 mb-6">{{ section.settings.title }}</h2>
+      {% endif %}
+      
+      {% if section.settings.text != blank %}
+        <div class="prose prose-invert prose-lg max-w-none text-dark-400">
+          {{ section.settings.text }}
+        </div>
+      {% endif %}
+      
+      {% if section.settings.button_label != blank %}
+        <div class="mt-8">
+          <a href="{{ section.settings.button_link }}" class="inline-flex items-center gap-2 px-6 py-3 bg-primary-600 hover:bg-primary-500 text-white font-medium rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-primary-500/25">
+            {{ section.settings.button_label }}
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Rich Text",
+  "tag": "section",
+  "class": "rich-text-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "About Us"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text",
+      "default": "<p>Share your brand story, mission, or any important information with your customers.</p>"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text alignment",
+      "default": "center",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "text",
+      "id": "custom_class",
+      "label": "Custom CSS class"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Rich Text"
+    }
+  ]
+}
+{% endschema %}

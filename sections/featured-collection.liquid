@@ -1,0 +1,100 @@
+{%- liquid
+  assign collection = collections[section.settings.collection]
+  assign products_to_show = section.settings.products_to_show
+  assign columns = section.settings.columns
+-%}
+
+<section class="featured-collection py-16 bg-dark-950">
+  <div class="container mx-auto px-6">
+    {% if section.settings.title != blank or section.settings.subtitle != blank %}
+      <div class="text-center mb-12">
+        {% if section.settings.title != blank %}
+          <h2 class="text-3xl md:text-4xl font-bold text-dark-100 mb-4">{{ section.settings.title }}</h2>
+        {% endif %}
+        {% if section.settings.subtitle != blank %}
+          <p class="text-dark-400 max-w-xl mx-auto">{{ section.settings.subtitle }}</p>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    {% if collection != blank and collection.products.size > 0 %}
+      <div class="grid grid-cols-1 sm:grid-cols-2 {% if columns == 3 %}lg:grid-cols-3{% elsif columns == 4 %}lg:grid-cols-3 xl:grid-cols-4{% else %}lg:grid-cols-2{% endif %} gap-6">
+        {% for product in collection.products limit: products_to_show %}
+          {% render 'product-card', product: product %}
+        {% endfor %}
+      </div>
+
+      {% if section.settings.show_view_all and collection.products.size > products_to_show %}
+        <div class="text-center mt-10">
+          <a href="{{ collection.url }}" class="inline-flex items-center gap-2 px-6 py-3 border border-dark-600 hover:border-primary-500 text-dark-100 hover:text-primary-400 font-medium rounded-lg transition-all duration-300">
+            View All {{ collection.title }}
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
+        </div>
+      {% endif %}
+    {% else %}
+      <div class="text-center py-12">
+        <p class="text-dark-500">No products found. Select a collection in the section settings.</p>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Featured Collection",
+  "tag": "section",
+  "class": "featured-collection-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Featured Products"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 2,
+      "max": 12,
+      "step": 1,
+      "default": 4,
+      "label": "Products to show"
+    },
+    {
+      "type": "select",
+      "id": "columns",
+      "label": "Columns",
+      "default": "4",
+      "options": [
+        { "value": "2", "label": "2 columns" },
+        { "value": "3", "label": "3 columns" },
+        { "value": "4", "label": "4 columns" }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "show_view_all",
+      "label": "Show 'View All' button",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Collection"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,156 @@
+{%- liquid
+  assign collection = collections[section.settings.collection]
+  assign products_to_show = section.settings.products_to_show
+-%}
+
+<section class="product-grid-filterable py-16 bg-dark-950" data-section-id="{{ section.id }}">
+  <div class="container mx-auto px-6">
+    {% if section.settings.title != blank %}
+      <div class="text-center mb-8">
+        <h2 class="text-3xl md:text-4xl font-bold text-dark-100 mb-4">{{ section.settings.title }}</h2>
+        {% if section.settings.subtitle != blank %}
+          <p class="text-dark-400 max-w-xl mx-auto">{{ section.settings.subtitle }}</p>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    {% if section.settings.show_filters and collection != blank %}
+      <div class="filters flex flex-wrap items-center justify-center gap-3 mb-10">
+        <button 
+          class="filter-btn px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 bg-primary-600 text-white"
+          data-filter="all"
+        >
+          All
+        </button>
+        {% for tag in collection.all_tags limit: 8 %}
+          <button 
+            class="filter-btn px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 bg-dark-800 text-dark-300 hover:bg-dark-700 hover:text-dark-100 border border-dark-700"
+            data-filter="{{ tag | handleize }}"
+          >
+            {{ tag }}
+          </button>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    {% if collection != blank and collection.products.size > 0 %}
+      <div class="product-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-{{ section.settings.columns }} gap-6">
+        {% for product in collection.products limit: products_to_show %}
+          <div class="product-item" data-tags="{% for tag in product.tags %}{{ tag | handleize }} {% endfor %}">
+            {% render 'product-card', product: product %}
+          </div>
+        {% endfor %}
+      </div>
+
+      {% if section.settings.show_load_more and collection.products.size > products_to_show %}
+        <div class="text-center mt-10">
+          <button class="load-more-btn px-8 py-3 bg-dark-800 hover:bg-dark-700 text-dark-100 font-medium rounded-lg transition-colors border border-dark-700">
+            Load More
+          </button>
+        </div>
+      {% endif %}
+    {% else %}
+      <div class="text-center py-12">
+        <p class="text-dark-500">No products found. Select a collection in the section settings.</p>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const section = document.querySelector('[data-section-id="{{ section.id }}"]');
+    if (!section) return;
+    
+    const filterBtns = section.querySelectorAll('.filter-btn');
+    const productItems = section.querySelectorAll('.product-item');
+    
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', function() {
+        const filter = this.dataset.filter;
+        
+        filterBtns.forEach(b => {
+          b.classList.remove('bg-primary-600', 'text-white');
+          b.classList.add('bg-dark-800', 'text-dark-300', 'border', 'border-dark-700');
+        });
+        this.classList.remove('bg-dark-800', 'text-dark-300', 'border', 'border-dark-700');
+        this.classList.add('bg-primary-600', 'text-white');
+        
+        productItems.forEach(item => {
+          if (filter === 'all') {
+            item.style.display = 'block';
+          } else {
+            const tags = item.dataset.tags || '';
+            if (tags.includes(filter)) {
+              item.style.display = 'block';
+            } else {
+              item.style.display = 'none';
+            }
+          }
+        });
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Product Grid (Filterable)",
+  "tag": "section",
+  "class": "product-grid-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Our Products"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 4,
+      "max": 24,
+      "step": 2,
+      "default": 12,
+      "label": "Products to show"
+    },
+    {
+      "type": "select",
+      "id": "columns",
+      "label": "Columns",
+      "default": "4",
+      "options": [
+        { "value": "3", "label": "3 columns" },
+        { "value": "4", "label": "4 columns" }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "show_filters",
+      "label": "Show tag filters",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_load_more",
+      "label": "Show 'Load More' button",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Grid (Filterable)"
+    }
+  ]
+}
+{% endschema %}

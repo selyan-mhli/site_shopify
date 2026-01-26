@@ -1,0 +1,149 @@
+{%- liquid
+  assign collection = collections[section.settings.collection]
+  assign products_to_show = section.settings.products_to_show
+-%}
+
+<section class="product-carousel py-16 bg-dark-950 overflow-hidden">
+  <div class="container mx-auto px-6">
+    {% if section.settings.title != blank %}
+      <div class="flex items-center justify-between mb-10">
+        <div>
+          <h2 class="text-3xl md:text-4xl font-bold text-dark-100 mb-2">{{ section.settings.title }}</h2>
+          {% if section.settings.subtitle != blank %}
+            <p class="text-dark-400">{{ section.settings.subtitle }}</p>
+          {% endif %}
+        </div>
+        {% if collection != blank %}
+          <a href="{{ collection.url }}" class="hidden md:inline-flex items-center gap-2 text-primary-400 hover:text-primary-300 font-medium transition-colors">
+            View All
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    {% if collection != blank and collection.products.size > 0 %}
+      <div class="carousel-wrapper relative">
+        <div class="carousel-track flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide" style="-webkit-overflow-scrolling: touch;">
+          {% for product in collection.products limit: products_to_show %}
+            <div class="carousel-item flex-shrink-0 w-[280px] sm:w-[300px] snap-start">
+              {% render 'product-card', product: product %}
+            </div>
+          {% endfor %}
+        </div>
+        
+        {% if section.settings.show_arrows %}
+          <button class="carousel-prev absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 w-12 h-12 bg-dark-800 hover:bg-dark-700 border border-dark-700 rounded-full flex items-center justify-center text-dark-300 hover:text-primary-400 transition-colors hidden lg:flex z-10">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+            </svg>
+          </button>
+          <button class="carousel-next absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 w-12 h-12 bg-dark-800 hover:bg-dark-700 border border-dark-700 rounded-full flex items-center justify-center text-dark-300 hover:text-primary-400 transition-colors hidden lg:flex z-10">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            </svg>
+          </button>
+        {% endif %}
+      </div>
+      
+      <div class="md:hidden text-center mt-6">
+        <a href="{{ collection.url }}" class="inline-flex items-center gap-2 text-primary-400 hover:text-primary-300 font-medium transition-colors">
+          View All
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+          </svg>
+        </a>
+      </div>
+    {% else %}
+      <div class="text-center py-12">
+        <p class="text-dark-500">No products found. Select a collection in the section settings.</p>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+<style>
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const carousels = document.querySelectorAll('.product-carousel');
+    
+    carousels.forEach(carousel => {
+      const track = carousel.querySelector('.carousel-track');
+      const prevBtn = carousel.querySelector('.carousel-prev');
+      const nextBtn = carousel.querySelector('.carousel-next');
+      
+      if (!track) return;
+      
+      const scrollAmount = 320;
+      
+      if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+          track.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+        });
+      }
+      
+      if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+          track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        });
+      }
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Product Carousel",
+  "tag": "section",
+  "class": "product-carousel-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Trending Now"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 4,
+      "max": 16,
+      "step": 1,
+      "default": 8,
+      "label": "Products to show"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_arrows",
+      "label": "Show navigation arrows",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Carousel"
+    }
+  ]
+}
+{% endschema %}
