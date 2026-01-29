@@ -1,65 +1,58 @@
-<header class="header fixed top-0 left-0 right-0 z-50 bg-dark-950/80 backdrop-blur-lg border-b border-dark-800/50">
+<header class="header fixed top-0 left-0 right-0 z-50 bg-transparent backdrop-blur-sm transition-all duration-300" data-header>
   <div class="container mx-auto px-6">
-    <nav class="flex items-center justify-between h-20">
-      <a href="/" class="header-logo flex items-center gap-3">
-        {%- if settings.logo != blank -%}
-          <img 
-            src="{{ settings.logo | image_url: width: 200 }}" 
-            alt="{{ shop.name }}"
-            class="h-10 w-auto"
-            loading="eager"
-          >
-        {%- else -%}
-          <img src="{{ 'logo.svg' | asset_url }}" alt="{{ shop.name }}" class="h-8 w-auto">
-        {%- endif -%}
-      </a>
-
-      <div class="header-nav hidden lg:flex items-center gap-8">
-        <a href="/" class="text-sm font-medium text-dark-300 hover:text-primary-400 transition-colors duration-200">
-          Home
+    <nav class="flex items-center justify-between h-16">
+      <div class="header-nav hidden lg:flex items-center gap-6">
+        <a href="/" class="text-sm font-normal text-white/90 hover:text-white transition-colors duration-200">
+          Accueil
         </a>
-        <a href="/collections/all" class="text-sm font-medium text-dark-300 hover:text-primary-400 transition-colors duration-200">
-          Products
+        <a href="/collections/all" class="text-sm font-normal text-white/90 hover:text-white transition-colors duration-200">
+          Produits
         </a>
-        <a href="/pages/about" class="text-sm font-medium text-dark-300 hover:text-primary-400 transition-colors duration-200">
-          About
+        <a href="/pages/solutions" class="text-sm font-normal text-white/90 hover:text-white transition-colors duration-200">
+          Solutions
         </a>
-        <a href="/pages/contact" class="text-sm font-medium text-dark-300 hover:text-primary-400 transition-colors duration-200">
+        <a href="/pages/assistance" class="text-sm font-normal text-white/90 hover:text-white transition-colors duration-200">
+          Assistance
+        </a>
+        <a href="/pages/about" class="text-sm font-normal text-white/90 hover:text-white transition-colors duration-200">
+          À propos
+        </a>
+        <a href="/pages/contact" class="text-sm font-normal text-white/90 hover:text-white transition-colors duration-200">
           Contact
         </a>
       </div>
 
-      <div class="header-actions flex items-center gap-4">
-        <a href="{{ routes.search_url }}" class="p-2 text-dark-400 hover:text-primary-400 transition-colors" aria-label="Search">
+      <div class="header-actions flex items-center gap-3">
+        <a href="{{ routes.search_url }}" class="p-2 text-white/70 hover:text-white transition-colors" aria-label="Rechercher">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
           </svg>
         </a>
         
-        <a href="{{ routes.account_url }}" class="p-2 text-dark-400 hover:text-primary-400 transition-colors" aria-label="Account">
+        <a href="{{ routes.account_url }}" class="p-2 text-white/70 hover:text-white transition-colors" aria-label="Compte">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
           </svg>
         </a>
         
-        <a href="{{ routes.cart_url }}" class="relative p-2 text-dark-400 hover:text-primary-400 transition-colors" aria-label="Cart">
+        <a href="{{ routes.cart_url }}" class="relative p-2 text-white/70 hover:text-white transition-colors" aria-label="Panier">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
           </svg>
           {%- if cart.item_count > 0 -%}
-            <span class="absolute -top-1 -right-1 w-5 h-5 bg-primary-500 text-white text-xs font-medium rounded-full flex items-center justify-center">
+            <span class="absolute -top-1 -right-1 w-4 h-4 bg-primary-500 text-white text-xs font-medium rounded-full flex items-center justify-center">
               {{ cart.item_count }}
             </span>
           {%- endif -%}
         </a>
 
         <button 
-          class="lg:hidden p-2 text-dark-400 hover:text-primary-400 transition-colors"
+          class="lg:hidden p-2 text-white/70 hover:text-white transition-colors"
           aria-label="Menu"
           data-mobile-menu-toggle
         >
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"/>
           </svg>
         </button>
       </div>
@@ -67,7 +60,7 @@
   </div>
 </header>
 
-<div class="h-20"></div>
+<div class="h-0"></div>
 
 {% schema %}
 {

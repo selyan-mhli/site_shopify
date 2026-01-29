@@ -1,0 +1,363 @@
+{%- liquid
+  assign section_id = 'new-arrivals-' | append: section.id
+-%}
+
+<section 
+  id="{{ section_id }}"
+  class="np-new-arrivals"
+  style="
+    --np-bg-color: {{ section.settings.bg_color }};
+    --np-text-color: {{ section.settings.text_color }};
+    --np-accent-color: {{ section.settings.accent_color }};
+    --np-padding-top: {{ section.settings.padding_top }}px;
+    --np-padding-bottom: {{ section.settings.padding_bottom }}px;
+  "
+>
+  <div class="np-new-arrivals__container">
+    {%- if section.settings.title != blank -%}
+      <h2 class="np-new-arrivals__title">{{ section.settings.title }}</h2>
+    {%- endif -%}
+
+    <div class="np-new-arrivals__grid">
+      {%- if section.settings.collection != blank -%}
+        {%- for product in section.settings.collection.products limit: section.settings.products_limit -%}
+          <article class="np-new-arrivals__product {% if forloop.first %}np-new-arrivals__product--large{% endif %}">
+            <a href="{{ product.url }}" class="np-new-arrivals__product-link">
+              <div class="np-new-arrivals__product-media">
+                {%- if product.featured_image != blank -%}
+                  <img 
+                    src="{{ product.featured_image | image_url: width: 800 }}"
+                    srcset="
+                      {{ product.featured_image | image_url: width: 400 }} 400w,
+                      {{ product.featured_image | image_url: width: 600 }} 600w,
+                      {{ product.featured_image | image_url: width: 800 }} 800w,
+                      {{ product.featured_image | image_url: width: 1200 }} 1200w
+                    "
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    alt="{{ product.title | escape }}"
+                    loading="lazy"
+                    class="np-new-arrivals__product-image"
+                  >
+                {%- else -%}
+                  <div class="np-new-arrivals__product-placeholder">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                      <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                      <circle cx="8.5" cy="8.5" r="1.5"/>
+                      <polyline points="21,15 16,10 5,21"/>
+                    </svg>
+                  </div>
+                {%- endif -%}
+              </div>
+              <div class="np-new-arrivals__product-info">
+                <h3 class="np-new-arrivals__product-title">{{ product.title }}</h3>
+                <p class="np-new-arrivals__product-price">{{ product.price | money }}</p>
+              </div>
+            </a>
+          </article>
+        {%- endfor -%}
+      {%- else -%}
+        {%- for i in (1..4) -%}
+          <article class="np-new-arrivals__product {% if forloop.first %}np-new-arrivals__product--large{% endif %}">
+            <div class="np-new-arrivals__product-link">
+              <div class="np-new-arrivals__product-media">
+                <div class="np-new-arrivals__product-placeholder">
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                    <circle cx="8.5" cy="8.5" r="1.5"/>
+                    <polyline points="21,15 16,10 5,21"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="np-new-arrivals__product-info">
+                <h3 class="np-new-arrivals__product-title">Product {{ i }}</h3>
+                <p class="np-new-arrivals__product-price">€99.00</p>
+              </div>
+            </div>
+          </article>
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+
+    {%- if section.settings.button_text != blank -%}
+      <div class="np-new-arrivals__cta">
+        <a href="{{ section.settings.button_link }}" class="np-new-arrivals__button">
+          {{ section.settings.button_text }}
+        </a>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+<style>
+  #{{ section_id }} {
+    background-color: var(--np-bg-color);
+    color: var(--np-text-color);
+    padding-top: var(--np-padding-top);
+    padding-bottom: var(--np-padding-bottom);
+  }
+
+  #{{ section_id }} .np-new-arrivals__container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  #{{ section_id }} .np-new-arrivals__title {
+    font-size: 1.25rem;
+    font-weight: 400;
+    margin: 0 0 2rem 0;
+  }
+
+  @media (min-width: 768px) {
+    #{{ section_id }} .np-new-arrivals__title {
+      font-size: 1.5rem;
+      margin-bottom: 3rem;
+    }
+  }
+
+  #{{ section_id }} .np-new-arrivals__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    #{{ section_id }} .np-new-arrivals__grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    #{{ section_id }} .np-new-arrivals__grid {
+      grid-template-columns: repeat({{ section.settings.columns }}, 1fr);
+    }
+  }
+
+  #{{ section_id }} .np-new-arrivals__product {
+    position: relative;
+  }
+
+  {%- if section.settings.first_large -%}
+    @media (min-width: 768px) {
+      #{{ section_id }} .np-new-arrivals__product--large {
+        grid-column: span 1;
+        grid-row: span 2;
+      }
+
+      #{{ section_id }} .np-new-arrivals__product--large .np-new-arrivals__product-media {
+        height: 100%;
+      }
+
+      #{{ section_id }} .np-new-arrivals__product--large .np-new-arrivals__product-image {
+        height: 100%;
+      }
+    }
+  {%- endif -%}
+
+  #{{ section_id }} .np-new-arrivals__product-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  #{{ section_id }} .np-new-arrivals__product-media {
+    position: relative;
+    overflow: hidden;
+    background-color: #1e293b;
+  }
+
+  #{{ section_id }} .np-new-arrivals__product-image {
+    width: 100%;
+    aspect-ratio: {{ section.settings.image_ratio }};
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  #{{ section_id }} .np-new-arrivals__product-link:hover .np-new-arrivals__product-image {
+    transform: scale(1.05);
+  }
+
+  #{{ section_id }} .np-new-arrivals__product-placeholder {
+    width: 100%;
+    aspect-ratio: {{ section.settings.image_ratio }};
+    background-color: #334155;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #64748b;
+  }
+
+  #{{ section_id }} .np-new-arrivals__product-info {
+    padding: 1rem 0;
+  }
+
+  #{{ section_id }} .np-new-arrivals__product-title {
+    font-size: 0.875rem;
+    font-weight: 400;
+    margin: 0 0 0.25rem 0;
+    line-height: 1.4;
+  }
+
+  #{{ section_id }} .np-new-arrivals__product-price {
+    font-size: 0.875rem;
+    opacity: 0.7;
+    margin: 0;
+  }
+
+  #{{ section_id }} .np-new-arrivals__cta {
+    text-align: center;
+    margin-top: 3rem;
+  }
+
+  #{{ section_id }} .np-new-arrivals__button {
+    display: inline-block;
+    padding: 0.875rem 2rem;
+    background-color: var(--np-accent-color);
+    color: #ffffff;
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+  }
+
+  #{{ section_id }} .np-new-arrivals__button:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+  }
+</style>
+
+{% schema %}
+{
+  "name": "New Arrivals",
+  "tag": "section",
+  "class": "np-new-arrivals-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "New Arrivals"
+    },
+    {
+      "type": "header",
+      "content": "Products"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "products_limit",
+      "min": 2,
+      "max": 12,
+      "step": 1,
+      "default": 4,
+      "label": "Products to show"
+    },
+    {
+      "type": "range",
+      "id": "columns",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "default": 2,
+      "label": "Columns (Desktop)"
+    },
+    {
+      "type": "checkbox",
+      "id": "first_large",
+      "label": "Make first product larger",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "label": "Image ratio",
+      "default": "4/5",
+      "options": [
+        { "value": "1/1", "label": "Square (1:1)" },
+        { "value": "4/5", "label": "Portrait (4:5)" },
+        { "value": "3/4", "label": "Portrait (3:4)" },
+        { "value": "16/9", "label": "Landscape (16:9)" }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link",
+      "default": "/collections/all"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#0f172a"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#f8fafc"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent color",
+      "default": "#0ea5e9"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "default": 60,
+      "unit": "px",
+      "label": "Padding top"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "default": 60,
+      "unit": "px",
+      "label": "Padding bottom"
+    }
+  ],
+  "presets": [
+    {
+      "name": "New Arrivals",
+      "settings": {
+        "title": "New Arrivals"
+      }
+    }
+  ]
+}
+{% endschema %}

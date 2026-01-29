@@ -1,0 +1,262 @@
+{%- liquid
+  assign section_id = 'marquee-' | append: section.id
+-%}
+
+<section 
+  id="{{ section_id }}"
+  class="np-marquee"
+  style="
+    --np-bg-color: {{ section.settings.bg_color }};
+    --np-text-color: {{ section.settings.text_color }};
+    --np-speed: {{ section.settings.speed }}s;
+    --np-font-size: {{ section.settings.font_size }}px;
+    --np-font-size-mobile: {{ section.settings.font_size_mobile }}px;
+    --np-padding-y: {{ section.settings.padding_y }}px;
+  "
+>
+  <div class="np-marquee__track">
+    <div class="np-marquee__content">
+      {%- if section.blocks.size > 0 -%}
+        {%- for block in section.blocks -%}
+          <span class="np-marquee__item" {{ block.shopify_attributes }}>
+            {{ block.settings.text }}
+          </span>
+          <span class="np-marquee__separator">{{ section.settings.separator }}</span>
+        {%- endfor -%}
+      {%- else -%}
+        <span class="np-marquee__item">{{ section.settings.default_text }}</span>
+        <span class="np-marquee__separator">{{ section.settings.separator }}</span>
+      {%- endif -%}
+    </div>
+    <div class="np-marquee__content" aria-hidden="true">
+      {%- if section.blocks.size > 0 -%}
+        {%- for block in section.blocks -%}
+          <span class="np-marquee__item">{{ block.settings.text }}</span>
+          <span class="np-marquee__separator">{{ section.settings.separator }}</span>
+        {%- endfor -%}
+      {%- else -%}
+        <span class="np-marquee__item">{{ section.settings.default_text }}</span>
+        <span class="np-marquee__separator">{{ section.settings.separator }}</span>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+<style>
+  #{{ section_id }} {
+    background-color: var(--np-bg-color);
+    color: var(--np-text-color);
+    padding: var(--np-padding-y) 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  #{{ section_id }} .np-marquee__track {
+    display: flex;
+    width: max-content;
+    animation: np-marquee-scroll var(--np-speed) linear infinite;
+  }
+
+  {%- if section.settings.pause_on_hover -%}
+    #{{ section_id }}:hover .np-marquee__track {
+      animation-play-state: paused;
+    }
+  {%- endif -%}
+
+  {%- if section.settings.direction == 'right' -%}
+    #{{ section_id }} .np-marquee__track {
+      animation-direction: reverse;
+    }
+  {%- endif -%}
+
+  @keyframes np-marquee-scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  #{{ section_id }} .np-marquee__content {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  #{{ section_id }} .np-marquee__item {
+    font-size: var(--np-font-size-mobile);
+    font-weight: {{ section.settings.font_weight }};
+    {%- if section.settings.uppercase -%}
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    {%- endif -%}
+  }
+
+  @media (min-width: 768px) {
+    #{{ section_id }} .np-marquee__item {
+      font-size: var(--np-font-size);
+    }
+  }
+
+  #{{ section_id }} .np-marquee__separator {
+    margin: 0 1.5rem;
+    opacity: 0.5;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Marquee Banner",
+  "tag": "section",
+  "class": "np-marquee-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "default_text",
+      "label": "Default text",
+      "default": "NextProtect — Caméras compactes et discrètes pour protéger votre maison, votre bureau et vos biens • Livraison rapide • Paiement sécurisé • Qualité d'image nette • Vision nocturne sur une sélection • Assistance 24/7 • Garantie satisfaction • Stock limité sur les meilleures ventes",
+      "info": "Used if no blocks are added"
+    },
+    {
+      "type": "text",
+      "id": "separator",
+      "label": "Separator",
+      "default": "•"
+    },
+    {
+      "type": "header",
+      "content": "Animation"
+    },
+    {
+      "type": "range",
+      "id": "speed",
+      "min": 10,
+      "max": 60,
+      "step": 5,
+      "default": 30,
+      "unit": "s",
+      "label": "Animation speed"
+    },
+    {
+      "type": "select",
+      "id": "direction",
+      "label": "Direction",
+      "default": "left",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "right", "label": "Right" }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "pause_on_hover",
+      "label": "Pause on hover",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "default": 14,
+      "unit": "px",
+      "label": "Font size (Desktop)"
+    },
+    {
+      "type": "range",
+      "id": "font_size_mobile",
+      "min": 10,
+      "max": 18,
+      "step": 1,
+      "default": 12,
+      "unit": "px",
+      "label": "Font size (Mobile)"
+    },
+    {
+      "type": "select",
+      "id": "font_weight",
+      "label": "Font weight",
+      "default": "400",
+      "options": [
+        { "value": "300", "label": "Light" },
+        { "value": "400", "label": "Regular" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semibold" }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "uppercase",
+      "label": "Uppercase",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#1e293b"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#f8fafc"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_y",
+      "min": 8,
+      "max": 32,
+      "step": 2,
+      "default": 12,
+      "unit": "px",
+      "label": "Vertical padding"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "Text item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Livraison rapide"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Marquee Banner",
+      "blocks": [
+        { "type": "text", "settings": { "text": "Livraison rapide" } },
+        { "type": "text", "settings": { "text": "Paiement sécurisé" } },
+        { "type": "text", "settings": { "text": "Qualité d'image nette" } },
+        { "type": "text", "settings": { "text": "Vision nocturne sur une sélection" } },
+        { "type": "text", "settings": { "text": "Stock limité sur les meilleures ventes" } },
+        { "type": "text", "settings": { "text": "Caméras compactes et discrètes" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
