@@ -1,209 +1,416 @@
-<section class="about-hero relative py-24 bg-dark-950 overflow-hidden">
-  <div class="absolute inset-0 bg-gradient-to-b from-primary-500/5 via-transparent to-transparent"></div>
-  <div class="container relative mx-auto px-6">
-    <div class="max-w-3xl mx-auto text-center">
-      <p class="text-sm font-mono text-primary-500 uppercase tracking-wider mb-4">Our Story</p>
-      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-dark-100 mb-6">{{ page.title }}</h1>
-      <p class="text-xl text-dark-400 leading-relaxed">
-        Building the future of security technology, one innovation at a time.
+<div class="np-about">
+  <!-- Hero Section -->
+  <section class="np-about__hero">
+    <div class="np-about__hero-container">
+      <div class="np-about__hero-content">
+        <p class="np-about__hero-label">NOTRE VISION</p>
+        <h1 class="np-about__hero-title">NextProtect Secure : La Surveillance Redéfinie</h1>
+        <p class="np-about__hero-text">
+          D'abord experts dans la capture des moments précieux, nous avons étendu notre savoir-faire optique à la protection de vos espaces. Nos systèmes de surveillance intègrent désormais l'IA de pointe pour une détection proactive et une clarté d'image inégalée, même dans l'obscurité totale.
+        </p>
+        
+        <div class="np-about__hero-features">
+          <div class="np-about__hero-feature">
+            <div class="np-about__hero-feature-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="4" y="4" width="16" height="16" rx="2"/>
+                <circle cx="12" cy="12" r="3"/>
+                <path d="M12 2v2"/>
+                <path d="M12 20v2"/>
+                <path d="M2 12h2"/>
+                <path d="M20 12h2"/>
+              </svg>
+            </div>
+            <div class="np-about__hero-feature-content">
+              <h4 class="np-about__hero-feature-title">IA de Pointe</h4>
+              <p class="np-about__hero-feature-text">Détection intelligente des visages et objets.</p>
+            </div>
+          </div>
+          
+          <div class="np-about__hero-feature">
+            <div class="np-about__hero-feature-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <circle cx="12" cy="12" r="6"/>
+                <circle cx="12" cy="12" r="2"/>
+              </svg>
+            </div>
+            <div class="np-about__hero-feature-content">
+              <h4 class="np-about__hero-feature-title">4K Ultra-Clarity</h4>
+              <p class="np-about__hero-feature-text">Chaque détail compte pour votre sécurité.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="np-about__hero-image">
+        <div class="np-about__hero-image-wrapper">
+          <div class="np-about__hero-image-placeholder">
+            <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+              <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+              <circle cx="12" cy="13" r="4"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust Section -->
+  <section class="np-about__trust">
+    <div class="np-about__trust-container">
+      <h2 class="np-about__trust-title">Pourquoi nous faire confiance ?</h2>
+      
+      <div class="np-about__trust-grid">
+        <div class="np-about__trust-card">
+          <div class="np-about__trust-icon np-about__trust-icon--purple">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              <path d="m9 12 2 2 4-4"/>
+            </svg>
+          </div>
+          <h3 class="np-about__trust-card-title">Sécurité sans faille</h3>
+          <p class="np-about__trust-card-text">
+            Nos protocoles de chiffrement bout-en-bout garantissent que vos images ne sont visibles que par vous.
+          </p>
+        </div>
+
+        <div class="np-about__trust-card">
+          <div class="np-about__trust-icon np-about__trust-icon--blue">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+              <circle cx="12" cy="13" r="4"/>
+            </svg>
+          </div>
+          <h3 class="np-about__trust-card-title">Héritage Optique</h3>
+          <p class="np-about__trust-card-text">
+            Nous utilisons des lentilles en verre pur, héritées de notre expérience dans la photographie de luxe.
+          </p>
+        </div>
+
+        <div class="np-about__trust-card">
+          <div class="np-about__trust-icon np-about__trust-icon--cyan">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+          </div>
+          <h3 class="np-about__trust-card-title">Support Local</h3>
+          <p class="np-about__trust-card-text">
+            Des experts basés en France disponibles 24/7 pour vous accompagner dans votre installation.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="np-about__cta">
+    <div class="np-about__cta-container">
+      <h2 class="np-about__cta-title">Prêt à sécuriser votre vision ?</h2>
+      <p class="np-about__cta-text">
+        Découvrez nos gammes de caméras professionnelles et nos solutions de surveillance résidentielle.
       </p>
-    </div>
-  </div>
-</section>
-
-<section class="about-mission py-16 bg-dark-900/30">
-  <div class="container mx-auto px-6">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-      <div>
-        <p class="text-sm font-mono text-primary-500 uppercase tracking-wider mb-4">Our Mission</p>
-        <h2 class="text-3xl md:text-4xl font-bold text-dark-100 mb-6">Protecting What Matters Most</h2>
-        <div class="prose prose-invert max-w-none text-dark-400 space-y-4">
-          <p>
-            At NextProtect, we believe everyone deserves access to professional-grade security solutions. 
-            Founded in 2020, we set out to bridge the gap between enterprise security systems and 
-            accessible home protection.
-          </p>
-          <p>
-            Our team of engineers and security experts work tirelessly to develop cutting-edge camera 
-            systems that combine advanced AI technology with intuitive design. We're not just selling 
-            cameras – we're providing peace of mind.
-          </p>
-        </div>
-      </div>
-      <div class="relative">
-        <div class="aspect-[4/3] rounded-xl bg-dark-800 overflow-hidden">
-          <div class="w-full h-full bg-gradient-to-br from-primary-500/20 to-dark-800 flex items-center justify-center">
-            <svg class="w-24 h-24 text-primary-500/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-            </svg>
-          </div>
-        </div>
-        <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-primary-500/10 rounded-full blur-2xl"></div>
+      <div class="np-about__cta-buttons">
+        <a href="/collections/all" class="np-about__cta-button np-about__cta-button--primary">
+          Voir la boutique
+        </a>
+        <a href="/pages/contact" class="np-about__cta-button np-about__cta-button--secondary">
+          Demander un devis surveillance
+        </a>
       </div>
     </div>
-  </div>
-</section>
-
-<section class="about-values py-16 bg-dark-950">
-  <div class="container mx-auto px-6">
-    <div class="text-center mb-12">
-      <p class="text-sm font-mono text-primary-500 uppercase tracking-wider mb-4">Our Values</p>
-      <h2 class="text-3xl md:text-4xl font-bold text-dark-100">What Drives Us</h2>
-    </div>
-    
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <div class="text-center p-8 bg-dark-800/30 border border-dark-700/50 rounded-xl">
-        <div class="w-16 h-16 mx-auto mb-6 bg-primary-500/10 rounded-xl flex items-center justify-center">
-          <svg class="w-8 h-8 text-primary-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
-          </svg>
-        </div>
-        <h3 class="text-xl font-semibold text-dark-100 mb-3">Innovation</h3>
-        <p class="text-dark-400">Constantly pushing boundaries to deliver the most advanced security technology available.</p>
-      </div>
-      
-      <div class="text-center p-8 bg-dark-800/30 border border-dark-700/50 rounded-xl">
-        <div class="w-16 h-16 mx-auto mb-6 bg-primary-500/10 rounded-xl flex items-center justify-center">
-          <svg class="w-8 h-8 text-primary-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
-          </svg>
-        </div>
-        <h3 class="text-xl font-semibold text-dark-100 mb-3">Customer First</h3>
-        <p class="text-dark-400">Every decision we make starts with how it will benefit our customers and their security needs.</p>
-      </div>
-      
-      <div class="text-center p-8 bg-dark-800/30 border border-dark-700/50 rounded-xl">
-        <div class="w-16 h-16 mx-auto mb-6 bg-primary-500/10 rounded-xl flex items-center justify-center">
-          <svg class="w-8 h-8 text-primary-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
-          </svg>
-        </div>
-        <h3 class="text-xl font-semibold text-dark-100 mb-3">Quality</h3>
-        <p class="text-dark-400">We never compromise on quality. Every product undergoes rigorous testing before reaching you.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="about-stats py-16 bg-dark-900/30 border-y border-dark-800/50">
-  <div class="container mx-auto px-6">
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-      <div class="text-center">
-        <p class="text-4xl md:text-5xl font-bold text-primary-500 mb-2">50K+</p>
-        <p class="text-dark-400">Happy Customers</p>
-      </div>
-      <div class="text-center">
-        <p class="text-4xl md:text-5xl font-bold text-primary-500 mb-2">99.9%</p>
-        <p class="text-dark-400">Uptime Guarantee</p>
-      </div>
-      <div class="text-center">
-        <p class="text-4xl md:text-5xl font-bold text-primary-500 mb-2">24/7</p>
-        <p class="text-dark-400">Customer Support</p>
-      </div>
-      <div class="text-center">
-        <p class="text-4xl md:text-5xl font-bold text-primary-500 mb-2">30+</p>
-        <p class="text-dark-400">Countries Served</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="about-faq py-16 bg-dark-950">
-  <div class="container mx-auto px-6">
-    <div class="max-w-3xl mx-auto">
-      <div class="text-center mb-12">
-        <p class="text-sm font-mono text-primary-500 uppercase tracking-wider mb-4">FAQ</p>
-        <h2 class="text-3xl md:text-4xl font-bold text-dark-100">Frequently Asked Questions</h2>
-      </div>
-
-      <div class="space-y-4">
-        <div class="faq-item border border-dark-700/50 rounded-xl overflow-hidden">
-          <button class="faq-trigger w-full flex items-center justify-between p-6 text-left bg-dark-800/30 hover:bg-dark-800/50 transition-colors" onclick="this.parentElement.classList.toggle('open')">
-            <span class="font-medium text-dark-100 pr-4">What is your return policy?</span>
-            <svg class="faq-icon w-5 h-5 text-primary-500 flex-shrink-0 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-            </svg>
-          </button>
-          <div class="faq-content">
-            <div class="p-6 pt-0 text-dark-400 leading-relaxed">
-              We offer a 30-day return policy on all products. Items must be in original condition with all accessories included.
-            </div>
-          </div>
-        </div>
-
-        <div class="faq-item border border-dark-700/50 rounded-xl overflow-hidden">
-          <button class="faq-trigger w-full flex items-center justify-between p-6 text-left bg-dark-800/30 hover:bg-dark-800/50 transition-colors" onclick="this.parentElement.classList.toggle('open')">
-            <span class="font-medium text-dark-100 pr-4">Do you offer international shipping?</span>
-            <svg class="faq-icon w-5 h-5 text-primary-500 flex-shrink-0 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-            </svg>
-          </button>
-          <div class="faq-content">
-            <div class="p-6 pt-0 text-dark-400 leading-relaxed">
-              Yes, we ship worldwide. Shipping costs and delivery times vary by location. Free shipping on orders over $100.
-            </div>
-          </div>
-        </div>
-
-        <div class="faq-item border border-dark-700/50 rounded-xl overflow-hidden">
-          <button class="faq-trigger w-full flex items-center justify-between p-6 text-left bg-dark-800/30 hover:bg-dark-800/50 transition-colors" onclick="this.parentElement.classList.toggle('open')">
-            <span class="font-medium text-dark-100 pr-4">What warranty do your products have?</span>
-            <svg class="faq-icon w-5 h-5 text-primary-500 flex-shrink-0 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-            </svg>
-          </button>
-          <div class="faq-content">
-            <div class="p-6 pt-0 text-dark-400 leading-relaxed">
-              All our products come with a 2-year manufacturer warranty covering defects in materials and workmanship.
-            </div>
-          </div>
-        </div>
-
-        <div class="faq-item border border-dark-700/50 rounded-xl overflow-hidden">
-          <button class="faq-trigger w-full flex items-center justify-between p-6 text-left bg-dark-800/30 hover:bg-dark-800/50 transition-colors" onclick="this.parentElement.classList.toggle('open')">
-            <span class="font-medium text-dark-100 pr-4">How do I set up my camera system?</span>
-            <svg class="faq-icon w-5 h-5 text-primary-500 flex-shrink-0 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-            </svg>
-          </button>
-          <div class="faq-content">
-            <div class="p-6 pt-0 text-dark-400 leading-relaxed">
-              Each product comes with detailed instructions and our mobile app guides you through the setup process. Our support team is available 24/7 if you need assistance.
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+  </section>
+</div>
 
 <style>
-  .faq-content {
-    max-height: 0;
+  .np-about {
+    background-color: #f8fafc;
+  }
+
+  /* Hero Section */
+  .np-about__hero {
+    padding: 80px 20px 60px;
+    background: #ffffff;
+  }
+
+  .np-about__hero-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    align-items: center;
+  }
+
+  @media (min-width: 1024px) {
+    .np-about__hero-container {
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+    }
+  }
+
+  .np-about__hero-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #6366f1;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin: 0 0 12px 0;
+  }
+
+  .np-about__hero-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 0 0 20px 0;
+    line-height: 1.2;
+  }
+
+  @media (min-width: 768px) {
+    .np-about__hero-title {
+      font-size: 2.5rem;
+    }
+  }
+
+  .np-about__hero-text {
+    font-size: 0.9375rem;
+    color: #64748b;
+    line-height: 1.7;
+    margin: 0 0 32px 0;
+  }
+
+  .np-about__hero-features {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .np-about__hero-feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 16px;
+    flex: 1;
+    min-width: 200px;
+  }
+
+  .np-about__hero-feature-icon {
+    width: 40px;
+    height: 40px;
+    background: #ede9fe;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6366f1;
+    flex-shrink: 0;
+  }
+
+  .np-about__hero-feature-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #0f172a;
+    margin: 0 0 4px 0;
+  }
+
+  .np-about__hero-feature-text {
+    font-size: 0.75rem;
+    color: #64748b;
+    margin: 0;
+  }
+
+  .np-about__hero-image {
+    display: flex;
+    justify-content: center;
+  }
+
+  .np-about__hero-image-wrapper {
+    width: 100%;
+    max-width: 500px;
+    aspect-ratio: 4/3;
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    border-radius: 16px;
     overflow: hidden;
-    transition: max-height 0.3s ease-out;
+    position: relative;
   }
-  .faq-item.open .faq-content {
-    max-height: 500px;
+
+  .np-about__hero-image-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6366f1;
+    opacity: 0.5;
   }
-  .faq-item.open .faq-icon {
-    transform: rotate(180deg);
+
+  /* Trust Section */
+  .np-about__trust {
+    padding: 80px 20px;
+    background: #ffffff;
+  }
+
+  .np-about__trust-container {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .np-about__trust-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #0f172a;
+    text-align: center;
+    margin: 0 0 48px 0;
+  }
+
+  .np-about__trust-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 32px;
+  }
+
+  .np-about__trust-card {
+    text-align: center;
+    padding: 20px;
+  }
+
+  .np-about__trust-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+  }
+
+  .np-about__trust-icon--purple {
+    background: #ede9fe;
+    color: #6366f1;
+  }
+
+  .np-about__trust-icon--blue {
+    background: #dbeafe;
+    color: #2563eb;
+  }
+
+  .np-about__trust-icon--cyan {
+    background: #cffafe;
+    color: #0891b2;
+  }
+
+  .np-about__trust-card-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #0f172a;
+    margin: 0 0 12px 0;
+  }
+
+  .np-about__trust-card-text {
+    font-size: 0.875rem;
+    color: #64748b;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* CTA Section */
+  .np-about__cta {
+    padding: 80px 20px;
+    background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+  }
+
+  .np-about__cta-container {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .np-about__cta-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 16px 0;
+  }
+
+  @media (min-width: 768px) {
+    .np-about__cta-title {
+      font-size: 2rem;
+    }
+  }
+
+  .np-about__cta-text {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.85);
+    margin: 0 0 32px 0;
+    line-height: 1.6;
+  }
+
+  .np-about__cta-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+  }
+
+  .np-about__cta-button {
+    padding: 14px 28px;
+    border-radius: 9999px;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .np-about__cta-button--primary {
+    background: #ffffff;
+    color: #6366f1;
+  }
+
+  .np-about__cta-button--primary:hover {
+    background: #f8fafc;
+    transform: translateY(-2px);
+  }
+
+  .np-about__cta-button--secondary {
+    background: transparent;
+    color: #ffffff;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+  }
+
+  .np-about__cta-button--secondary:hover {
+    border-color: rgba(255, 255, 255, 0.8);
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 768px) {
+    .np-about__hero {
+      padding: 60px 16px 40px;
+    }
+
+    .np-about__hero-title {
+      font-size: 1.75rem;
+    }
+
+    .np-about__trust {
+      padding: 60px 16px;
+    }
+
+    .np-about__cta {
+      padding: 60px 16px;
+    }
+
+    .np-about__cta-buttons {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .np-about__cta-button {
+      width: 100%;
+      max-width: 280px;
+      text-align: center;
+    }
   }
 </style>
-
-<section class="about-cta py-16 bg-dark-900/30">
-  <div class="container mx-auto px-6">
-    <div class="max-w-2xl mx-auto text-center">
-      <h2 class="text-3xl md:text-4xl font-bold text-dark-100 mb-6">Ready to Secure Your Space?</h2>
-      <p class="text-dark-400 mb-8">Join thousands of satisfied customers who trust NextProtect for their security needs.</p>
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-        <a href="/collections/all" class="px-8 py-4 bg-primary-600 hover:bg-primary-500 text-white font-medium rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-primary-500/25">
-          Shop Now
-        </a>
-        <a href="/pages/contact" class="px-8 py-4 border border-dark-600 hover:border-primary-500 text-dark-100 hover:text-primary-400 font-medium rounded-lg transition-colors">
-          Contact Us
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
