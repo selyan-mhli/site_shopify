@@ -1,183 +1,465 @@
 <div class="np-assistance">
   <div class="np-assistance__container">
+    <!-- Header -->
     <header class="np-assistance__header">
-      <h1 class="np-assistance__title">Assistance & Support client</h1>
-      <p class="np-assistance__subtitle">Notre équipe vous accompagne avant, pendant et après votre achat.</p>
+      <h1 class="np-assistance__title">
+        Comment pouvons-nous<br>
+        <span class="np-assistance__title-accent">vous aider aujourd'hui ?</span>
+      </h1>
+      <p class="np-assistance__subtitle">
+        Trouvez des réponses rapides sur vos commandes, des guides techniques pour votre matériel ou contactez un expert.
+      </p>
     </header>
 
-    <div class="np-assistance__grid">
-      <div class="np-assistance__card">
-        <h2 class="np-assistance__card-title">📦 Suivi de commande & livraison</h2>
-        <p class="np-assistance__card-text">
-          Suivez votre commande à chaque étape. Un email de confirmation et un numéro de suivi vous sont envoyés dès l'expédition.
-        </p>
-      </div>
-
-      <div class="np-assistance__card">
-        <h2 class="np-assistance__card-title">🔄 Retours & remboursements</h2>
-        <p class="np-assistance__card-text">
-          Vous disposez de 14 jours après réception pour effectuer un retour. Le remboursement est réalisé après vérification du produit.
-        </p>
-      </div>
-
-      <div class="np-assistance__card">
-        <h2 class="np-assistance__card-title">🛠️ Installation & configuration</h2>
-        <p class="np-assistance__card-text">
-          Installation facile, connexion Wi-Fi, application mobile, alertes et accès à distance. Nos guides vous accompagnent pas à pas.
-        </p>
-      </div>
-
-      <div class="np-assistance__card">
-        <h2 class="np-assistance__card-title">📱 Compatibilité & applications</h2>
-        <p class="np-assistance__card-text">
-          Compatible Android, iOS, tablettes et ordinateurs. Vision en direct, enregistrements et notifications en temps réel.
-        </p>
-      </div>
-
-      <div class="np-assistance__card">
-        <h2 class="np-assistance__card-title">🔐 Sécurité & confidentialité</h2>
-        <p class="np-assistance__card-text">
-          Données protégées, flux chiffrés et conformité RGPD. Vos images restent privées et sous votre contrôle.
-        </p>
-      </div>
-
-      <div class="np-assistance__card">
-        <h2 class="np-assistance__card-title">🧾 Garantie & SAV</h2>
-        <p class="np-assistance__card-text">
-          Tous nos produits bénéficient d'une garantie et d'un support technique dédié pour vous accompagner en cas de besoin.
-        </p>
-      </div>
+    <!-- Search Bar -->
+    <div class="np-assistance__search">
+      <form action="/search" method="get" class="np-assistance__search-form">
+        <svg class="np-assistance__search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"/>
+          <path d="m21 21-4.35-4.35"/>
+        </svg>
+        <input 
+          type="text" 
+          name="q" 
+          placeholder="Rechercher par modèle de caméra, numéro de commande ou problème technique"
+          class="np-assistance__search-input"
+        >
+      </form>
     </div>
 
-    <div class="np-assistance__cta">
-      <h2 class="np-assistance__cta-title">Besoin d'aide ou d'un conseil personnalisé ?</h2>
-      <p class="np-assistance__cta-text">Notre équipe est à votre écoute pour vous accompagner.</p>
-      <a href="/pages/contact" class="np-assistance__cta-button">Contacter le support</a>
+    <!-- Cards Grid -->
+    <div class="np-assistance__grid">
+      <a href="/account" class="np-assistance__card">
+        <div class="np-assistance__card-icon np-assistance__card-icon--blue">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+            <line x1="12" y1="22.08" x2="12" y2="12"/>
+          </svg>
+        </div>
+        <div class="np-assistance__card-content">
+          <h3 class="np-assistance__card-title">Suivi de Commande</h3>
+          <p class="np-assistance__card-text">Où en est mon colis ?</p>
+        </div>
+      </a>
+
+      <a href="/pages/retours" class="np-assistance__card">
+        <div class="np-assistance__card-icon np-assistance__card-icon--green">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+            <path d="M3 3v5h5"/>
+          </svg>
+        </div>
+        <div class="np-assistance__card-content">
+          <h3 class="np-assistance__card-title">Retours & Échanges</h3>
+          <p class="np-assistance__card-text">Politique de 30 jours</p>
+        </div>
+      </a>
+
+      <a href="/pages/guides" class="np-assistance__card">
+        <div class="np-assistance__card-icon np-assistance__card-icon--purple">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="4" y="4" width="16" height="16" rx="2"/>
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M12 2v2"/>
+            <path d="M12 20v2"/>
+            <path d="m4.93 4.93 1.41 1.41"/>
+            <path d="m17.66 17.66 1.41 1.41"/>
+            <path d="M2 12h2"/>
+            <path d="M20 12h2"/>
+            <path d="m6.34 17.66-1.41 1.41"/>
+            <path d="m19.07 4.93-1.41 1.41"/>
+          </svg>
+        </div>
+        <div class="np-assistance__card-content">
+          <h3 class="np-assistance__card-title">Mise à jour Firmware</h3>
+          <p class="np-assistance__card-text">Derniers logiciels</p>
+        </div>
+      </a>
+
+      <a href="/pages/garantie" class="np-assistance__card">
+        <div class="np-assistance__card-icon np-assistance__card-icon--red">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+          </svg>
+        </div>
+        <div class="np-assistance__card-content">
+          <h3 class="np-assistance__card-title">Garantie & Réparation</h3>
+          <p class="np-assistance__card-text">Enregistrez votre matériel</p>
+        </div>
+      </a>
+
+      <a href="/pages/installation" class="np-assistance__card">
+        <div class="np-assistance__card-icon np-assistance__card-icon--pink">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+            <line x1="8" y1="7" x2="16" y2="7"/>
+            <line x1="8" y1="11" x2="14" y2="11"/>
+          </svg>
+        </div>
+        <div class="np-assistance__card-content">
+          <h3 class="np-assistance__card-title">Guides Techniques</h3>
+          <p class="np-assistance__card-text">Optimisez vos réglages</p>
+        </div>
+      </a>
+
+      <a href="/account/register" class="np-assistance__card">
+        <div class="np-assistance__card-icon np-assistance__card-icon--yellow">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+          </svg>
+        </div>
+        <div class="np-assistance__card-content">
+          <h3 class="np-assistance__card-title">Devenir Membre</h3>
+          <p class="np-assistance__card-text">Avantages exclusifs</p>
+        </div>
+      </a>
+    </div>
+
+    <!-- Expert CTA -->
+    <div class="np-assistance__expert">
+      <h2 class="np-assistance__expert-title">Besoin d'un expert en direct ?</h2>
+      <p class="np-assistance__expert-text">
+        Utilisez notre assistant vocal intelligent pour une aide immédiate sur le choix ou l'entretien de votre matériel.
+      </p>
+      <a href="/pages/contact" class="np-assistance__expert-button">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/>
+          <path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/>
+        </svg>
+        Lancer l'Assistance Vocale
+      </a>
+    </div>
+
+    <!-- FAQ Section -->
+    <div class="np-assistance__faq">
+      <h2 class="np-assistance__faq-title">Questions fréquentes</h2>
+      
+      <div class="np-assistance__faq-list">
+        <details class="np-assistance__faq-item">
+          <summary class="np-assistance__faq-question">Comment configurer ma caméra espion WiFi ?</summary>
+          <div class="np-assistance__faq-answer">
+            <p>Téléchargez l'application recommandée (indiquée dans le manuel), connectez votre caméra au réseau WiFi via le QR code, puis suivez les instructions de l'app pour finaliser la configuration.</p>
+          </div>
+        </details>
+
+        <details class="np-assistance__faq-item">
+          <summary class="np-assistance__faq-question">Quels sont les délais de livraison ?</summary>
+          <div class="np-assistance__faq-answer">
+            <p>Les commandes sont expédiées sous 24-48h. La livraison standard prend 3-5 jours ouvrés en France métropolitaine. Un numéro de suivi vous est envoyé par email.</p>
+          </div>
+        </details>
+
+        <details class="np-assistance__faq-item">
+          <summary class="np-assistance__faq-question">Ma batterie se décharge trop vite, que faire ?</summary>
+          <div class="np-assistance__faq-answer">
+            <p>Désactivez les fonctions inutilisées (détection de mouvement continue, enregistrement HD permanent). Vérifiez que le firmware est à jour. Si le problème persiste, contactez notre support.</p>
+          </div>
+        </details>
+
+        <details class="np-assistance__faq-item">
+          <summary class="np-assistance__faq-question">Puis-je retourner une caméra après l'avoir essayée ?</summary>
+          <div class="np-assistance__faq-answer">
+            <p>Oui, vous disposez de 14 jours après réception pour retourner le produit. Il doit être dans son état d'origine avec tous les accessoires. Le remboursement est effectué sous 5-7 jours après réception.</p>
+          </div>
+        </details>
+      </div>
     </div>
   </div>
 </div>
 
 <style>
   .np-assistance {
-    background-color: #0f172a;
+    background-color: #f8fafc;
     min-height: 100vh;
     padding: 80px 20px 60px;
   }
 
   .np-assistance__container {
-    max-width: 1100px;
+    max-width: 900px;
     margin: 0 auto;
   }
 
+  /* Header */
   .np-assistance__header {
     text-align: center;
-    margin-bottom: 50px;
+    margin-bottom: 40px;
   }
 
   .np-assistance__title {
-    font-size: 2rem;
-    font-weight: 600;
-    color: #ffffff;
-    margin: 0 0 12px 0;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 0 0 16px 0;
+    line-height: 1.2;
+  }
+
+  .np-assistance__title-accent {
+    color: #6366f1;
   }
 
   .np-assistance__subtitle {
     font-size: 1rem;
-    color: #94a3b8;
+    color: #64748b;
     margin: 0;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
   }
 
+  /* Search */
+  .np-assistance__search {
+    margin-bottom: 40px;
+  }
+
+  .np-assistance__search-form {
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .np-assistance__search-icon {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #94a3b8;
+  }
+
+  .np-assistance__search-input {
+    width: 100%;
+    padding: 14px 16px 14px 48px;
+    border: 1px solid #e2e8f0;
+    border-radius: 9999px;
+    font-size: 0.9375rem;
+    color: #0f172a;
+    background: #ffffff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  .np-assistance__search-input:focus {
+    outline: none;
+    border-color: #6366f1;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+  }
+
+  .np-assistance__search-input::placeholder {
+    color: #94a3b8;
+  }
+
+  /* Cards Grid */
   .np-assistance__grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-    margin-bottom: 50px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 60px;
   }
 
   .np-assistance__card {
-    background: #1e293b;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
     border-radius: 12px;
-    padding: 28px;
-    border: 1px solid #334155;
-    transition: transform 0.3s ease, border-color 0.3s ease;
+    padding: 20px;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
   }
 
   .np-assistance__card:hover {
-    transform: translateY(-4px);
-    border-color: #0ea5e9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  }
+
+  .np-assistance__card-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .np-assistance__card-icon--blue {
+    background: #dbeafe;
+    color: #2563eb;
+  }
+
+  .np-assistance__card-icon--green {
+    background: #d1fae5;
+    color: #059669;
+  }
+
+  .np-assistance__card-icon--purple {
+    background: #ede9fe;
+    color: #7c3aed;
+  }
+
+  .np-assistance__card-icon--red {
+    background: #fee2e2;
+    color: #dc2626;
+  }
+
+  .np-assistance__card-icon--pink {
+    background: #fce7f3;
+    color: #db2777;
+  }
+
+  .np-assistance__card-icon--yellow {
+    background: #fef3c7;
+    color: #d97706;
+  }
+
+  .np-assistance__card-content {
+    flex: 1;
+    min-width: 0;
   }
 
   .np-assistance__card-title {
-    font-size: 1.125rem;
+    font-size: 0.9375rem;
     font-weight: 600;
-    color: #ffffff;
-    margin: 0 0 12px 0;
+    color: #0f172a;
+    margin: 0 0 4px 0;
   }
 
   .np-assistance__card-text {
-    font-size: 0.9375rem;
-    line-height: 1.6;
-    color: #94a3b8;
+    font-size: 0.8125rem;
+    color: #64748b;
     margin: 0;
   }
 
-  .np-assistance__cta {
-    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-    border: 1px solid #334155;
-    border-radius: 16px;
-    padding: 50px 30px;
+  /* Expert CTA */
+  .np-assistance__expert {
     text-align: center;
+    margin-bottom: 60px;
   }
 
-  .np-assistance__cta-title {
+  .np-assistance__expert-title {
     font-size: 1.5rem;
-    font-weight: 600;
-    color: #ffffff;
+    font-weight: 700;
+    color: #0f172a;
     margin: 0 0 12px 0;
   }
 
-  .np-assistance__cta-text {
-    font-size: 1rem;
-    color: #94a3b8;
+  .np-assistance__expert-text {
+    font-size: 0.9375rem;
+    color: #64748b;
     margin: 0 0 24px 0;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
-  .np-assistance__cta-button {
-    display: inline-block;
-    background: #0ea5e9;
+  .np-assistance__expert-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #6366f1;
     color: #ffffff;
-    padding: 14px 32px;
+    padding: 14px 28px;
     border-radius: 9999px;
     font-size: 0.9375rem;
     font-weight: 600;
     text-decoration: none;
-    transition: background 0.3s ease, transform 0.3s ease;
+    transition: background 0.2s, transform 0.2s;
   }
 
-  .np-assistance__cta-button:hover {
-    background: #0284c7;
+  .np-assistance__expert-button:hover {
+    background: #4f46e5;
     transform: translateY(-2px);
   }
 
+  /* FAQ */
+  .np-assistance__faq {
+    margin-bottom: 40px;
+  }
+
+  .np-assistance__faq-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #0f172a;
+    text-align: center;
+    margin: 0 0 24px 0;
+  }
+
+  .np-assistance__faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .np-assistance__faq-item {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .np-assistance__faq-question {
+    padding: 16px 20px;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: #0f172a;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .np-assistance__faq-question::-webkit-details-marker {
+    display: none;
+  }
+
+  .np-assistance__faq-question::after {
+    content: '+';
+    font-size: 1.25rem;
+    color: #94a3b8;
+    transition: transform 0.2s;
+  }
+
+  .np-assistance__faq-item[open] .np-assistance__faq-question::after {
+    content: '−';
+  }
+
+  .np-assistance__faq-answer {
+    padding: 0 20px 16px;
+    font-size: 0.875rem;
+    color: #64748b;
+    line-height: 1.6;
+  }
+
+  .np-assistance__faq-answer p {
+    margin: 0;
+  }
+
+  /* Responsive */
   @media (max-width: 768px) {
     .np-assistance {
       padding: 60px 16px 40px;
     }
 
     .np-assistance__title {
-      font-size: 1.5rem;
+      font-size: 1.75rem;
     }
 
     .np-assistance__grid {
       grid-template-columns: 1fr;
     }
 
-    .np-assistance__cta {
-      padding: 40px 20px;
-    }
-
-    .np-assistance__cta-title {
+    .np-assistance__expert-title {
       font-size: 1.25rem;
+    }
+  }
+
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .np-assistance__grid {
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 </style>
