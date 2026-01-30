@@ -1,0 +1,150 @@
+<div class="np-order">
+  <div class="np-order__container">
+    <a href="{{ routes.account_url }}" class="np-order__back">← Retour au compte</a>
+    
+    <h1 class="np-order__title">Commande {{ order.name }}</h1>
+    <p class="np-order__date">Passée le {{ order.created_at | date: "%d/%m/%Y à %H:%M" }}</p>
+    
+    <div class="np-order__status">
+      <span>Paiement : {{ order.financial_status_label }}</span>
+      <span>Livraison : {{ order.fulfillment_status_label }}</span>
+    </div>
+    
+    <table class="np-order__items">
+      <thead>
+        <tr>
+          <th>Produit</th>
+          <th>Quantité</th>
+          <th>Prix</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for line_item in order.line_items %}
+          <tr>
+            <td>
+              {{ line_item.title }}
+              {% if line_item.variant.title != 'Default Title' %}
+                <br><small>{{ line_item.variant.title }}</small>
+              {% endif %}
+            </td>
+            <td>{{ line_item.quantity }}</td>
+            <td>{{ line_item.final_line_price | money }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    
+    <div class="np-order__totals">
+      <div class="np-order__total-row">
+        <span>Sous-total</span>
+        <span>{{ order.line_items_subtotal_price | money }}</span>
+      </div>
+      {% for discount in order.discounts %}
+        <div class="np-order__total-row">
+          <span>Réduction ({{ discount.code }})</span>
+          <span>-{{ discount.savings | money }}</span>
+        </div>
+      {% endfor %}
+      <div class="np-order__total-row">
+        <span>Livraison</span>
+        <span>{{ order.shipping_price | money }}</span>
+      </div>
+      <div class="np-order__total-row np-order__total-row--final">
+        <span>Total</span>
+        <span>{{ order.total_price | money }}</span>
+      </div>
+    </div>
+    
+    <div class="np-order__addresses">
+      <div class="np-order__address">
+        <h3>Adresse de livraison</h3>
+        {{ order.shipping_address | format_address }}
+      </div>
+      <div class="np-order__address">
+        <h3>Adresse de facturation</h3>
+        {{ order.billing_address | format_address }}
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .np-order {
+    padding: 80px 20px;
+    background: #0f172a;
+    min-height: 60vh;
+  }
+  .np-order__container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .np-order__back {
+    color: #6366f1;
+    font-size: 0.875rem;
+  }
+  .np-order__title {
+    font-size: 2rem;
+    color: #ffffff;
+    margin: 16px 0 8px 0;
+  }
+  .np-order__date {
+    color: #94a3b8;
+    margin: 0 0 24px 0;
+  }
+  .np-order__status {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 32px;
+    color: #94a3b8;
+  }
+  .np-order__items {
+    width: 100%;
+    border-collapse: collapse;
+    color: #94a3b8;
+    margin-bottom: 24px;
+  }
+  .np-order__items th,
+  .np-order__items td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #334155;
+  }
+  .np-order__items th {
+    color: #ffffff;
+  }
+  .np-order__totals {
+    background: #1e293b;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 32px;
+  }
+  .np-order__total-row {
+    display: flex;
+    justify-content: space-between;
+    color: #94a3b8;
+    padding: 8px 0;
+  }
+  .np-order__total-row--final {
+    border-top: 1px solid #334155;
+    margin-top: 8px;
+    padding-top: 16px;
+    color: #ffffff;
+    font-weight: 600;
+  }
+  .np-order__addresses {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .np-order__address {
+    background: #1e293b;
+    padding: 20px;
+    border-radius: 8px;
+    color: #94a3b8;
+  }
+  .np-order__address h3 {
+    color: #ffffff;
+    margin: 0 0 12px 0;
+    font-size: 1rem;
+  }
+</style>

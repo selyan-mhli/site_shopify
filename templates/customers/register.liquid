@@ -1,0 +1,101 @@
+<div class="np-register">
+  <div class="np-register__container">
+    <h1 class="np-register__title">Créer un compte</h1>
+    
+    {% form 'create_customer' %}
+      {{ form.errors | default_errors }}
+      
+      <div class="np-register__field">
+        <label for="FirstName">Prénom</label>
+        <input type="text" name="customer[first_name]" id="FirstName" autocomplete="given-name" required>
+      </div>
+      
+      <div class="np-register__field">
+        <label for="LastName">Nom</label>
+        <input type="text" name="customer[last_name]" id="LastName" autocomplete="family-name" required>
+      </div>
+      
+      <div class="np-register__field">
+        <label for="Email">Email</label>
+        <input type="email" name="customer[email]" id="Email" autocomplete="email" required>
+      </div>
+      
+      <div class="np-register__field">
+        <label for="Password">Mot de passe</label>
+        <input type="password" name="customer[password]" id="Password" autocomplete="new-password" required>
+      </div>
+      
+      <button type="submit" class="np-register__button">Créer mon compte</button>
+    {% endform %}
+    
+    <p class="np-register__login">
+      Déjà un compte ? <a href="{{ routes.account_login_url }}">Se connecter</a>
+    </p>
+  </div>
+</div>
+
+<style>
+  .np-register {
+    padding: 80px 20px;
+    background: #0f172a;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .np-register__container {
+    max-width: 400px;
+    width: 100%;
+  }
+  .np-register__title {
+    font-size: 2rem;
+    color: #ffffff;
+    text-align: center;
+    margin: 0 0 32px 0;
+  }
+  .np-register__field {
+    margin-bottom: 20px;
+  }
+  .np-register__field label {
+    display: block;
+    color: #94a3b8;
+    margin-bottom: 8px;
+    font-size: 0.875rem;
+  }
+  .np-register__field input {
+    width: 100%;
+    padding: 12px 16px;
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 1rem;
+  }
+  .np-register__field input:focus {
+    outline: none;
+    border-color: #6366f1;
+  }
+  .np-register__button {
+    width: 100%;
+    padding: 14px;
+    background: #6366f1;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .np-register__button:hover {
+    background: #4f46e5;
+  }
+  .np-register__login {
+    text-align: center;
+    margin-top: 24px;
+    color: #94a3b8;
+  }
+  .np-register__login a {
+    color: #6366f1;
+  }
+</style>

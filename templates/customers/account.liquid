@@ -1,0 +1,86 @@
+<div class="np-account">
+  <div class="np-account__container">
+    <h1 class="np-account__title">Mon compte</h1>
+    
+    <div class="np-account__info">
+      <p><strong>{{ customer.name }}</strong></p>
+      <p>{{ customer.email }}</p>
+      <a href="{{ routes.account_logout_url }}">Déconnexion</a>
+    </div>
+
+    <h2 class="np-account__subtitle">Historique des commandes</h2>
+    
+    {% if customer.orders.size > 0 %}
+      <table class="np-account__orders">
+        <thead>
+          <tr>
+            <th>Commande</th>
+            <th>Date</th>
+            <th>Statut</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for order in customer.orders %}
+            <tr>
+              <td><a href="{{ order.customer_url }}">{{ order.name }}</a></td>
+              <td>{{ order.created_at | date: "%d/%m/%Y" }}</td>
+              <td>{{ order.fulfillment_status_label }}</td>
+              <td>{{ order.total_price | money }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <p>Vous n'avez pas encore passé de commande.</p>
+    {% endif %}
+
+    <h2 class="np-account__subtitle">Adresses</h2>
+    <a href="{{ routes.account_addresses_url }}">Gérer mes adresses</a>
+  </div>
+</div>
+
+<style>
+  .np-account {
+    padding: 80px 20px;
+    background: #0f172a;
+    min-height: 60vh;
+  }
+  .np-account__container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .np-account__title {
+    font-size: 2rem;
+    color: #ffffff;
+    margin: 0 0 24px 0;
+  }
+  .np-account__subtitle {
+    font-size: 1.25rem;
+    color: #ffffff;
+    margin: 32px 0 16px 0;
+  }
+  .np-account__info {
+    background: #1e293b;
+    padding: 20px;
+    border-radius: 8px;
+    color: #94a3b8;
+  }
+  .np-account__info a {
+    color: #6366f1;
+  }
+  .np-account__orders {
+    width: 100%;
+    border-collapse: collapse;
+    color: #94a3b8;
+  }
+  .np-account__orders th,
+  .np-account__orders td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #334155;
+  }
+  .np-account__orders a {
+    color: #6366f1;
+  }
+</style>

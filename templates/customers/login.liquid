@@ -1,0 +1,105 @@
+<div class="np-login">
+  <div class="np-login__container">
+    <h1 class="np-login__title">Connexion</h1>
+    
+    {% form 'customer_login' %}
+      {{ form.errors | default_errors }}
+      
+      <div class="np-login__field">
+        <label for="CustomerEmail">Email</label>
+        <input type="email" name="customer[email]" id="CustomerEmail" autocomplete="email" required>
+      </div>
+      
+      <div class="np-login__field">
+        <label for="CustomerPassword">Mot de passe</label>
+        <input type="password" name="customer[password]" id="CustomerPassword" autocomplete="current-password" required>
+      </div>
+      
+      <button type="submit" class="np-login__button">Se connecter</button>
+      
+      <p class="np-login__links">
+        <a href="{{ routes.account_recover_url }}">Mot de passe oublié ?</a>
+      </p>
+    {% endform %}
+    
+    <p class="np-login__register">
+      Pas encore de compte ? <a href="{{ routes.account_register_url }}">Créer un compte</a>
+    </p>
+  </div>
+</div>
+
+<style>
+  .np-login {
+    padding: 80px 20px;
+    background: #0f172a;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .np-login__container {
+    max-width: 400px;
+    width: 100%;
+  }
+  .np-login__title {
+    font-size: 2rem;
+    color: #ffffff;
+    text-align: center;
+    margin: 0 0 32px 0;
+  }
+  .np-login__field {
+    margin-bottom: 20px;
+  }
+  .np-login__field label {
+    display: block;
+    color: #94a3b8;
+    margin-bottom: 8px;
+    font-size: 0.875rem;
+  }
+  .np-login__field input {
+    width: 100%;
+    padding: 12px 16px;
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 1rem;
+  }
+  .np-login__field input:focus {
+    outline: none;
+    border-color: #6366f1;
+  }
+  .np-login__button {
+    width: 100%;
+    padding: 14px;
+    background: #6366f1;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .np-login__button:hover {
+    background: #4f46e5;
+  }
+  .np-login__links {
+    text-align: center;
+    margin-top: 16px;
+  }
+  .np-login__links a {
+    color: #6366f1;
+    font-size: 0.875rem;
+  }
+  .np-login__register {
+    text-align: center;
+    margin-top: 32px;
+    color: #94a3b8;
+    padding-top: 24px;
+    border-top: 1px solid #334155;
+  }
+  .np-login__register a {
+    color: #6366f1;
+  }
+</style>

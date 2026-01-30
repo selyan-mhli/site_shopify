@@ -1,0 +1,146 @@
+<div class="np-addresses">
+  <div class="np-addresses__container">
+    <h1 class="np-addresses__title">Mes adresses</h1>
+    <a href="{{ routes.account_url }}" class="np-addresses__back">← Retour au compte</a>
+    
+    <h2 class="np-addresses__subtitle">Ajouter une nouvelle adresse</h2>
+    
+    {% form 'customer_address', customer.new_address %}
+      <div class="np-addresses__grid">
+        <div class="np-addresses__field">
+          <label for="AddressFirstName">Prénom</label>
+          <input type="text" name="address[first_name]" id="AddressFirstName" value="{{ form.first_name }}">
+        </div>
+        <div class="np-addresses__field">
+          <label for="AddressLastName">Nom</label>
+          <input type="text" name="address[last_name]" id="AddressLastName" value="{{ form.last_name }}">
+        </div>
+      </div>
+      
+      <div class="np-addresses__field">
+        <label for="AddressAddress1">Adresse</label>
+        <input type="text" name="address[address1]" id="AddressAddress1" value="{{ form.address1 }}">
+      </div>
+      
+      <div class="np-addresses__grid">
+        <div class="np-addresses__field">
+          <label for="AddressCity">Ville</label>
+          <input type="text" name="address[city]" id="AddressCity" value="{{ form.city }}">
+        </div>
+        <div class="np-addresses__field">
+          <label for="AddressZip">Code postal</label>
+          <input type="text" name="address[zip]" id="AddressZip" value="{{ form.zip }}">
+        </div>
+      </div>
+      
+      <div class="np-addresses__field">
+        <label for="AddressCountry">Pays</label>
+        <select name="address[country]" id="AddressCountry">
+          {{ all_country_option_tags }}
+        </select>
+      </div>
+      
+      <div class="np-addresses__field">
+        <label for="AddressPhone">Téléphone</label>
+        <input type="tel" name="address[phone]" id="AddressPhone" value="{{ form.phone }}">
+      </div>
+      
+      <button type="submit" class="np-addresses__button">Ajouter l'adresse</button>
+    {% endform %}
+    
+    {% if customer.addresses.size > 0 %}
+      <h2 class="np-addresses__subtitle">Adresses enregistrées</h2>
+      {% for address in customer.addresses %}
+        <div class="np-addresses__card">
+          <p>{{ address | format_address }}</p>
+          <div class="np-addresses__actions">
+            <a href="{{ address.url }}">Modifier</a>
+            {% form 'customer_address', address %}
+              <input type="hidden" name="_method" value="delete">
+              <button type="submit">Supprimer</button>
+            {% endform %}
+          </div>
+        </div>
+      {% endfor %}
+    {% endif %}
+  </div>
+</div>
+
+<style>
+  .np-addresses {
+    padding: 80px 20px;
+    background: #0f172a;
+    min-height: 60vh;
+  }
+  .np-addresses__container {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .np-addresses__title {
+    font-size: 2rem;
+    color: #ffffff;
+    margin: 0 0 8px 0;
+  }
+  .np-addresses__back {
+    color: #6366f1;
+    font-size: 0.875rem;
+  }
+  .np-addresses__subtitle {
+    font-size: 1.25rem;
+    color: #ffffff;
+    margin: 32px 0 16px 0;
+  }
+  .np-addresses__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .np-addresses__field {
+    margin-bottom: 16px;
+  }
+  .np-addresses__field label {
+    display: block;
+    color: #94a3b8;
+    margin-bottom: 8px;
+    font-size: 0.875rem;
+  }
+  .np-addresses__field input,
+  .np-addresses__field select {
+    width: 100%;
+    padding: 12px 16px;
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 1rem;
+  }
+  .np-addresses__button {
+    padding: 14px 24px;
+    background: #6366f1;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .np-addresses__card {
+    background: #1e293b;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    color: #94a3b8;
+  }
+  .np-addresses__actions {
+    margin-top: 12px;
+    display: flex;
+    gap: 16px;
+  }
+  .np-addresses__actions a,
+  .np-addresses__actions button {
+    color: #6366f1;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 0.875rem;
+  }
+</style>
