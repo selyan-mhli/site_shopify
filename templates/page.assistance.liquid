@@ -1,0 +1,183 @@
+<div class="np-assistance">
+  <div class="np-assistance__container">
+    <header class="np-assistance__header">
+      <h1 class="np-assistance__title">Assistance & Support client</h1>
+      <p class="np-assistance__subtitle">Notre équipe vous accompagne avant, pendant et après votre achat.</p>
+    </header>
+
+    <div class="np-assistance__grid">
+      <div class="np-assistance__card">
+        <h2 class="np-assistance__card-title">📦 Suivi de commande & livraison</h2>
+        <p class="np-assistance__card-text">
+          Suivez votre commande à chaque étape. Un email de confirmation et un numéro de suivi vous sont envoyés dès l'expédition.
+        </p>
+      </div>
+
+      <div class="np-assistance__card">
+        <h2 class="np-assistance__card-title">🔄 Retours & remboursements</h2>
+        <p class="np-assistance__card-text">
+          Vous disposez de 14 jours après réception pour effectuer un retour. Le remboursement est réalisé après vérification du produit.
+        </p>
+      </div>
+
+      <div class="np-assistance__card">
+        <h2 class="np-assistance__card-title">🛠️ Installation & configuration</h2>
+        <p class="np-assistance__card-text">
+          Installation facile, connexion Wi-Fi, application mobile, alertes et accès à distance. Nos guides vous accompagnent pas à pas.
+        </p>
+      </div>
+
+      <div class="np-assistance__card">
+        <h2 class="np-assistance__card-title">📱 Compatibilité & applications</h2>
+        <p class="np-assistance__card-text">
+          Compatible Android, iOS, tablettes et ordinateurs. Vision en direct, enregistrements et notifications en temps réel.
+        </p>
+      </div>
+
+      <div class="np-assistance__card">
+        <h2 class="np-assistance__card-title">🔐 Sécurité & confidentialité</h2>
+        <p class="np-assistance__card-text">
+          Données protégées, flux chiffrés et conformité RGPD. Vos images restent privées et sous votre contrôle.
+        </p>
+      </div>
+
+      <div class="np-assistance__card">
+        <h2 class="np-assistance__card-title">🧾 Garantie & SAV</h2>
+        <p class="np-assistance__card-text">
+          Tous nos produits bénéficient d'une garantie et d'un support technique dédié pour vous accompagner en cas de besoin.
+        </p>
+      </div>
+    </div>
+
+    <div class="np-assistance__cta">
+      <h2 class="np-assistance__cta-title">Besoin d'aide ou d'un conseil personnalisé ?</h2>
+      <p class="np-assistance__cta-text">Notre équipe est à votre écoute pour vous accompagner.</p>
+      <a href="/pages/contact" class="np-assistance__cta-button">Contacter le support</a>
+    </div>
+  </div>
+</div>
+
+<style>
+  .np-assistance {
+    background-color: #0f172a;
+    min-height: 100vh;
+    padding: 80px 20px 60px;
+  }
+
+  .np-assistance__container {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .np-assistance__header {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  .np-assistance__title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0 0 12px 0;
+  }
+
+  .np-assistance__subtitle {
+    font-size: 1rem;
+    color: #94a3b8;
+    margin: 0;
+  }
+
+  .np-assistance__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-bottom: 50px;
+  }
+
+  .np-assistance__card {
+    background: #1e293b;
+    border-radius: 12px;
+    padding: 28px;
+    border: 1px solid #334155;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+  }
+
+  .np-assistance__card:hover {
+    transform: translateY(-4px);
+    border-color: #0ea5e9;
+  }
+
+  .np-assistance__card-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0 0 12px 0;
+  }
+
+  .np-assistance__card-text {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: #94a3b8;
+    margin: 0;
+  }
+
+  .np-assistance__cta {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    border: 1px solid #334155;
+    border-radius: 16px;
+    padding: 50px 30px;
+    text-align: center;
+  }
+
+  .np-assistance__cta-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0 0 12px 0;
+  }
+
+  .np-assistance__cta-text {
+    font-size: 1rem;
+    color: #94a3b8;
+    margin: 0 0 24px 0;
+  }
+
+  .np-assistance__cta-button {
+    display: inline-block;
+    background: #0ea5e9;
+    color: #ffffff;
+    padding: 14px 32px;
+    border-radius: 9999px;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+
+  .np-assistance__cta-button:hover {
+    background: #0284c7;
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 768px) {
+    .np-assistance {
+      padding: 60px 16px 40px;
+    }
+
+    .np-assistance__title {
+      font-size: 1.5rem;
+    }
+
+    .np-assistance__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .np-assistance__cta {
+      padding: 40px 20px;
+    }
+
+    .np-assistance__cta-title {
+      font-size: 1.25rem;
+    }
+  }
+</style>
